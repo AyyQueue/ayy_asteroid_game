@@ -6,5 +6,6 @@ module Background {
     requires Common;
     requires CommonBackground;
     requires javafx.graphics;
+    requires spring.context;
     provides BackgroundSPI with BackgroundPlugin;
 }

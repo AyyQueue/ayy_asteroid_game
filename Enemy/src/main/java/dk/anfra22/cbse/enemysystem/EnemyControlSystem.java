@@ -15,16 +15,23 @@ import static java.util.stream.Collectors.toList;
 public class EnemyControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
+        Entity player = world.getEntities(Player.class).stream().findFirst().orElse(null);
         for (Entity enemy : world.getEntities(Enemy.class)) {
-            Entity player = world.getEntities(Player.class).stream().findFirst().orElse(null);
-
             if (player != null) {
+                // This is the arctan2 formula to triangulate the angle between 2 points
+                // I use it for setting the rotation of the enemy, so that it always points at the player
                 double deltaX = player.getX() - enemy.getX();
                 double deltaY = player.getY() - enemy.getY();
 
                 double rotationAngle = Math.atan2(deltaY, deltaX);
 
                 enemy.setRotation(Math.toDegrees(rotationAngle));
+
+                // Sets the enemy to move
+                double changeX = Math.cos(Math.toRadians(enemy.getRotation())) * 0.7; // Enemy should be a bit slower than player
+                double changeY = Math.sin(Math.toRadians(enemy.getRotation())) * 0.7;
+                enemy.setX(enemy.getX() + changeX);
+                enemy.setY(enemy.getY() + changeY);
 
 
             }

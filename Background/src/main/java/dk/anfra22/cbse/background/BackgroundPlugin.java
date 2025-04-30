@@ -6,7 +6,11 @@ import dk.anfra22.cbse.common.data.World;
 import dk.anfra22.cbse.common.services.IGamePluginService;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.springframework.context.annotation.*;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class BackgroundPlugin implements IGamePluginService, BackgroundSPI {
 
 

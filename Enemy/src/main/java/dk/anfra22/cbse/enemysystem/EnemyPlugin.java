@@ -28,23 +28,10 @@ public class EnemyPlugin implements IGamePluginService {
 
         Entity enemyShip = new Enemy();
         Random random = new Random();
-        enemyShip.setPolygonCoordinates(-5,-5,10,0,-5,5);
+        enemyShip.setPolygonCoordinates(-10,-10,15,0,-10,10);
         enemyShip.setX(random.nextInt(gameData.getDisplayHeight()));
         enemyShip.setY(random.nextInt(gameData.getDisplayWidth()));
-        enemyShip.setRadius(8);
-
-        Entity player = world.getEntities(Player.class).stream().findFirst().orElse(null);
-
-            if (player != null) {
-                double deltaX = player.getX() - enemy.getX();
-                double deltaY = player.getY() - enemy.getY();
-
-                double rotationAngle = Math.atan2(deltaY, deltaX);
-
-                enemy.setRotation(Math.toDegrees(rotationAngle));
-
-
-            }
+        enemyShip.setRadius(10);
         enemyShip.setColor("RED");
         return enemyShip;
     }

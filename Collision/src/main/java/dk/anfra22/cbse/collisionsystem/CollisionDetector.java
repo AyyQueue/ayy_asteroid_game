@@ -1,11 +1,23 @@
 package dk.anfra22.cbse.collisionsystem;
 
+import dk.anfra22.cbse.common.asteroids.Asteroid;
+import dk.anfra22.cbse.common.asteroids.IAsteroidSplitter;
 import dk.anfra22.cbse.common.data.Entity;
 import dk.anfra22.cbse.common.data.GameData;
 import dk.anfra22.cbse.common.data.World;
 import dk.anfra22.cbse.common.services.IPostEntityProcessingService;
+import dk.anfra22.cbse.common.bullet.Bullet;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.ServiceLoader;
 
 public class CollisionDetector implements IPostEntityProcessingService {
+
+    private final IAsteroidSplitter asteroidSplitter = ServiceLoader.load(IAsteroidSplitter.class)
+            .findFirst()
+            .orElseThrow(() -> new IllegalStateException("No IAsteroidSplitter implementation found!"));
 
     public CollisionDetector() {
     }
@@ -21,10 +33,24 @@ public class CollisionDetector implements IPostEntityProcessingService {
                     continue;                    
                 }
 
+                if (entity1 instanceof Asteroid && entity2 instanceof Asteroid) {
+                    continue;
+                }
+
                 // CollisionDetection
                 if (this.collides(entity1, entity2)) {
-                    world.removeEntity(entity1);
-                    world.removeEntity(entity2);
+                    System.out.println(entity1.getClass());
+                    System.out.println(entity2.getClass());
+                    if (entity1.getClass().equals(Bullet.class) && entity2.getClass().equals(Asteroid.class)) {
+                        world.removeEntity(entity1);
+                        asteroidSplitter.createSplitAsteroid(entity2, world);
+                    } else if (entity1.getClass().equals(Asteroid.class) && entity2.getClass().equals(Bullet.class)) {
+                        world.removeEntity(entity2);
+                        asteroidSplitter.createSplitAsteroid(entity1, world);
+                    } else {
+                        world.removeEntity(entity1);
+                        world.removeEntity(entity2);
+                    }
                 }
             }
         }

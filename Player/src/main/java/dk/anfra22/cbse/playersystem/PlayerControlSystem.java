@@ -15,15 +15,19 @@ import static java.util.stream.Collectors.toList;
 
 public class PlayerControlSystem implements IEntityProcessingService {
 
+    private int bulletCooldown = 0;
+
     @Override
     public void process(GameData gameData, World world) {
 
+
+
         for (Entity player : world.getEntities(Player.class)) {
             if (gameData.getKeys().isDown(GameKeys.LEFT)) {
-                player.setRotation(player.getRotation() - 5);
+                player.setRotation(player.getRotation() - 2);
             }
             if (gameData.getKeys().isDown(GameKeys.RIGHT)) {
-                player.setRotation(player.getRotation() + 5);
+                player.setRotation(player.getRotation() + 2);
             }
             if (gameData.getKeys().isDown(GameKeys.UP)) {
                 double changeX = Math.cos(Math.toRadians(player.getRotation()));
@@ -32,9 +36,13 @@ public class PlayerControlSystem implements IEntityProcessingService {
                 player.setY(player.getY() + changeY);
             }
             if(gameData.getKeys().isDown(GameKeys.SPACE)) {
-                getBulletSPIs().stream().findFirst().ifPresent(
-                        spi -> {world.addEntity(spi.createBullet(player, gameData));}
-                );
+                if (bulletCooldown == 0) {
+                    getBulletSPIs().stream().findFirst().ifPresent(
+                            spi -> world.addEntity(spi.createBullet(player, gameData))
+                    );
+                    bulletCooldown = 10;
+                }
+                bulletCooldown-=1;
             }
 
             if (player.getX() < 0) {

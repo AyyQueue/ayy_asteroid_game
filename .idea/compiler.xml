@@ -20,6 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Levels" target="9" />
       <module name="Main" target="9" />
     </bytecodeTargetLevel>
   </component>
