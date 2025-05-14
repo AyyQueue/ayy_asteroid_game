@@ -1,8 +1,11 @@
 package dk.anfra22.cbse.common.data;
 
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.util.UUID;
 
+@Component
 public class Entity implements Serializable {
 
     private final UUID ID = UUID.randomUUID();
@@ -13,6 +16,7 @@ public class Entity implements Serializable {
     private double rotation;
     private float radius;
     private String color;
+    private int healthPoints;
 
 
     public String getID() {
@@ -68,5 +72,13 @@ public class Entity implements Serializable {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public int getHealthPoints() {
+        return healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
     }
 }

@@ -9,13 +9,16 @@
         <module name="Bullet" />
         <module name="Player" />
         <module name="Background" />
-        <module name="Asteroids" />
         <module name="CommonBackground" />
         <module name="CommonAsteroids" />
-        <module name="Enemy" />
         <module name="Collision" />
         <module name="CommonBullet" />
         <module name="Common" />
+        <module name="CommonWeapon" />
+        <module name="Asteroids" />
+        <module name="Singleshot" />
+        <module name="Enemy" />
+        <module name="Multishot" />
         <module name="Core" />
       </profile>
     </annotationProcessing>

@@ -5,9 +5,11 @@ import dk.anfra22.cbse.common.data.GameData;
 import dk.anfra22.cbse.common.data.World;
 import dk.anfra22.cbse.common.services.IGamePluginService;
 import dk.anfra22.cbse.playersystem.Player;
+import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
+@Component
 public class EnemyPlugin implements IGamePluginService {
 
 

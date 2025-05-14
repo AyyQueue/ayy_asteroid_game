@@ -6,12 +6,14 @@ import dk.anfra22.cbse.common.data.GameData;
 import dk.anfra22.cbse.common.data.World;
 import dk.anfra22.cbse.common.services.IEntityProcessingService;
 import dk.anfra22.cbse.playersystem.Player;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.ServiceLoader;
 
 import static java.util.stream.Collectors.toList;
 
+@Component
 public class EnemyControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {

@@ -1,0 +1,4 @@
+--patch-module
+Singleshot=_
+--add-reads
+Singleshot=ALL-UNNAMED

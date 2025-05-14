@@ -1,52 +1,66 @@
 package dk.anfra22.cbse.core;
 
+import dk.anfra22.cbse.common.background.Background;
 import dk.anfra22.cbse.common.background.BackgroundSPI;
 import dk.anfra22.cbse.common.data.Entity;
 import dk.anfra22.cbse.common.data.GameData;
 import dk.anfra22.cbse.common.data.GameKeys;
 import dk.anfra22.cbse.common.data.World;
 import dk.anfra22.cbse.common.services.IEntityProcessingService;
+import dk.anfra22.cbse.common.services.IGameDataProcessingService;
 import dk.anfra22.cbse.common.services.IGamePluginService;
 import dk.anfra22.cbse.common.services.IPostEntityProcessingService;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
 
 
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+
+@Component
 public class GameLogic extends Application {
     private final GameData gameData = new GameData();
     private final World world = new World();
     private final Map<Entity, Polygon> polygons = new ConcurrentHashMap<>();
-    private final Pane gameWindow = new Pane();
+//    private final Pane gameWindow = new Pane();
     private final List<IGamePluginService> gamePluginServices;
     private final List<IEntityProcessingService> entityProcessingServices;
     private final List<IPostEntityProcessingService> postEntityProcessingServices;
     private final List<BackgroundSPI> backgroundService;
+    private final List<IGameDataProcessingService> gameDataProcessingServices;
 
-    public GameLogic(List<IGamePluginService> gamePluginServices, List<IEntityProcessingService> entityProcessingServices, List<IPostEntityProcessingService> postEntityProcessingServices, List<BackgroundSPI> backgroundService) {
+    public GameLogic(List<IGamePluginService> gamePluginServices, List<IEntityProcessingService> entityProcessingServices,
+                     List<IPostEntityProcessingService> postEntityProcessingServices, List<BackgroundSPI> backgroundService,
+                     List<IGameDataProcessingService> gameDataProcessingService) {
         this.gamePluginServices = gamePluginServices;
         this.entityProcessingServices = entityProcessingServices;
         this.postEntityProcessingServices = postEntityProcessingServices;
         this.backgroundService = backgroundService;
+        this.gameDataProcessingServices = gameDataProcessingService;
     }
 
     @Override
     public void start(Stage window) throws Exception {
         Text text = new Text(10, 20, "Destroyed asteroids: 0");
-        gameWindow.setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
-        gameWindow.getChildren().add(text);
+        text.setFill(Color.WHITE);
+        text.setId("asteroidText");
+        text.toFront();
 
-        Scene scene = new Scene(gameWindow);
+        gameData.getGameWindow().setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
+        gameData.getGameWindow().getChildren().add(text);
+
+        Scene scene = new Scene(gameData.getGameWindow());
         scene.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.A)) {
                 gameData.getKeys().setKey(GameKeys.LEFT, true);
@@ -59,6 +73,14 @@ public class GameLogic extends Application {
             }
             if (event.getCode().equals(KeyCode.SPACE)) {
                 gameData.getKeys().setKey(GameKeys.SPACE, true);
+            }
+            if (event.getCode().equals(KeyCode.Q)) {
+                System.out.println("Q Pressed Here!");
+                gameData.getKeys().setKey(GameKeys.Q, true);
+            }
+            if (event.getCode().equals(KeyCode.E)) {
+                System.out.println("E Pressed Here!");
+                gameData.getKeys().setKey(GameKeys.E, true);
             }
         });
         scene.setOnKeyReleased(event -> {
@@ -74,6 +96,12 @@ public class GameLogic extends Application {
             if (event.getCode().equals(KeyCode.SPACE)) {
                 gameData.getKeys().setKey(GameKeys.SPACE, false);
             }
+            if (event.getCode().equals(KeyCode.Q)) {
+                gameData.getKeys().setKey(GameKeys.Q, false);
+            }
+            if (event.getCode().equals(KeyCode.E)) {
+                gameData.getKeys().setKey(GameKeys.E, false);
+            }
 
         });
 
@@ -85,7 +113,9 @@ public class GameLogic extends Application {
 
         if (backgroundService.stream().findAny().isPresent()) {;
             System.out.println("Background service started");
-            gameWindow.getChildren().add(backgroundService.stream().findAny().get().getBackground(gameData));
+            ImageView background = backgroundService.stream().findAny().get().getBackground(gameData);
+            gameData.getGameWindow().getChildren().add(background);
+            background.toBack();
         }
 
         for (Entity entity : world.getEntities()) {
@@ -95,7 +125,7 @@ public class GameLogic extends Application {
                 polygon.setFill(Color.valueOf(entity.getColor()));
             }
             polygons.put(entity, polygon);
-            gameWindow.getChildren().add(polygon);
+            gameData.getGameWindow().getChildren().add(polygon);
         }
         render();
         window.setScene(scene);
@@ -122,6 +152,9 @@ public class GameLogic extends Application {
         for (IPostEntityProcessingService postEntityProcessorService : postEntityProcessingServices) {
             postEntityProcessorService.process(gameData, world);
         }
+        for (IGameDataProcessingService gameDataProcessingService : gameDataProcessingServices) {
+            gameDataProcessingService.process(gameData, world);
+        }
     }
 
     private void draw() {
@@ -129,7 +162,7 @@ public class GameLogic extends Application {
             if(!world.getEntities().contains(polygonEntity)){
                 Polygon removedPolygon = polygons.get(polygonEntity);
                 polygons.remove(polygonEntity);
-                gameWindow.getChildren().remove(removedPolygon);
+                gameData.getGameWindow().getChildren().remove(removedPolygon);
             }
         }
 
@@ -138,7 +171,7 @@ public class GameLogic extends Application {
             if (polygon == null) {
                 polygon = new Polygon(entity.getPolygonCoordinates());
                 polygons.put(entity, polygon);
-                gameWindow.getChildren().add(polygon);
+                gameData.getGameWindow().getChildren().add(polygon);
             }
             polygon.setTranslateX(entity.getX());
             polygon.setTranslateY(entity.getY());

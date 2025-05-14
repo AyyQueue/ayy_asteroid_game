@@ -2,8 +2,10 @@ package dk.anfra22.cbse.core;
 
 import dk.anfra22.cbse.common.background.BackgroundSPI;
 import dk.anfra22.cbse.common.services.IEntityProcessingService;
+import dk.anfra22.cbse.common.services.IGameDataProcessingService;
 import dk.anfra22.cbse.common.services.IGamePluginService;
 import dk.anfra22.cbse.common.services.IPostEntityProcessingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,12 +18,10 @@ import static java.util.stream.Collectors.toList;
 @Configuration
 public class SpringLoader {
 
-    public SpringLoader(){};
-
     @Bean
     public GameLogic game(){
         return new GameLogic(gamePluginServices(), entityProcessingServiceList(), postEntityProcessingServices(),
-                backgroundService());
+                backgroundService(), gameDataProcessingService());
     }
 
     @Bean
@@ -43,4 +43,10 @@ public class SpringLoader {
     public List<BackgroundSPI> backgroundService() {
         return ServiceLoader.load(BackgroundSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
+
+    @Bean
+    public List<IGameDataProcessingService> gameDataProcessingService() {
+        return ServiceLoader.load(IGameDataProcessingService.class).stream().map(ServiceLoader.Provider::get).collect(toList());
+    }
 }
+

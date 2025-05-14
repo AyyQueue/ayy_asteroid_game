@@ -5,7 +5,6 @@ import dk.anfra22.cbse.common.asteroids.IAsteroidSplitter;
 import dk.anfra22.cbse.common.data.Entity;
 import dk.anfra22.cbse.common.data.GameData;
 import dk.anfra22.cbse.common.data.World;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.OptionalDouble;
@@ -15,22 +14,27 @@ public class AsteroidSplitterImpl implements IAsteroidSplitter {
 
     @Override
     public void createSplitAsteroid(Entity e, World world) {
+        System.out.println(e.getHealthPoints());
 
-        if (e.getPolygonCoordinates()[0] <= 8) {
-            world.removeEntity(e);
+        if (e.getHealthPoints() == 1) {
+            if (e.getPolygonCoordinates()[0] <= 8) {
+                world.removeEntity(e);
+            } else {
+                Asteroid splitAsteroid1 = initializeSplitAsteroid(e);
+                splitAsteroid1.setX(e.getX()-splitAsteroid1.getRadius()-1);
+                splitAsteroid1.setY(e.getY()-splitAsteroid1.getRadius()-1);
+
+                Asteroid splitAsteroid2 = initializeSplitAsteroid(e);
+                splitAsteroid2.setX(e.getX()+splitAsteroid2.getRadius()+1);
+                splitAsteroid2.setY(e.getY()+splitAsteroid2.getRadius()+1);
+
+                world.addEntity(splitAsteroid1);
+                world.addEntity(splitAsteroid2);
+
+                world.removeEntity(e);
+            }
         } else {
-            Asteroid splitAsteroid1 = initializeSplitAsteroid(e);
-            splitAsteroid1.setX(e.getX()-splitAsteroid1.getRadius()-1);
-            splitAsteroid1.setY(e.getY()-splitAsteroid1.getRadius()-1);
-
-            Asteroid splitAsteroid2 = initializeSplitAsteroid(e);
-            splitAsteroid2.setX(e.getX()+splitAsteroid2.getRadius()+1);
-            splitAsteroid2.setY(e.getY()+splitAsteroid2.getRadius()+1);
-
-            world.addEntity(splitAsteroid1);
-            world.addEntity(splitAsteroid2);
-
-            world.removeEntity(e);
+            e.setHealthPoints(e.getHealthPoints()-1);
         }
     }
 
@@ -47,7 +51,7 @@ public class AsteroidSplitterImpl implements IAsteroidSplitter {
         asteroid.setRadius((float) splitAsteroidPolygonCoordinates[0]);
 
         asteroid.setRotation(rnd.nextInt(90));
-        asteroid.setLifeAmount(rnd.nextInt(4));
+        asteroid.setHealthPoints(rnd.nextInt(2,4));
 
         return asteroid;
     }

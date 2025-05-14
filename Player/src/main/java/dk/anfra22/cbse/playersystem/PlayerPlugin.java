@@ -4,6 +4,9 @@ import dk.anfra22.cbse.common.data.Entity;
 import dk.anfra22.cbse.common.data.GameData;
 import dk.anfra22.cbse.common.data.World;
 import dk.anfra22.cbse.common.services.IGamePluginService;
+import org.springframework.stereotype.Component;
+
+@Component
 public class PlayerPlugin implements IGamePluginService {
 
     private Entity player;
@@ -16,6 +19,7 @@ public class PlayerPlugin implements IGamePluginService {
 
         // Add entities to the world
         player = createPlayerShip(gameData);
+        player.setColor("GREEN");
         world.addEntity(player);
     }
 

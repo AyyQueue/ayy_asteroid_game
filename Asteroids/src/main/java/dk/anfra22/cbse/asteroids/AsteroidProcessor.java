@@ -6,10 +6,10 @@ import dk.anfra22.cbse.common.data.Entity;
 import dk.anfra22.cbse.common.data.GameData;
 import dk.anfra22.cbse.common.data.World;
 import dk.anfra22.cbse.common.services.IEntityProcessingService;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AsteroidProcessor implements IEntityProcessingService {
-
-    private IAsteroidSplitter asteroidSplitter = new AsteroidSplitterImpl();
 
     @Override
     public void process(GameData gameData, World world) {
@@ -38,19 +38,5 @@ public class AsteroidProcessor implements IEntityProcessingService {
             }
 
         }
-
     }
-
-    /**
-     * Dependency Injection using OSGi Declarative Services
-     */
-    public void setAsteroidSplitter(IAsteroidSplitter asteroidSplitter) {
-        this.asteroidSplitter = asteroidSplitter;
-    }
-
-    public void removeAsteroidSplitter(IAsteroidSplitter asteroidSplitter) {
-        this.asteroidSplitter = null;
-    }
-
-
 }

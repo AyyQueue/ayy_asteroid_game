@@ -8,9 +8,6 @@ import dk.anfra22.cbse.common.data.World;
 import dk.anfra22.cbse.common.services.IPostEntityProcessingService;
 import dk.anfra22.cbse.common.bullet.Bullet;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.util.ServiceLoader;
 
 public class CollisionDetector implements IPostEntityProcessingService {
@@ -18,6 +15,8 @@ public class CollisionDetector implements IPostEntityProcessingService {
     private final IAsteroidSplitter asteroidSplitter = ServiceLoader.load(IAsteroidSplitter.class)
             .findFirst()
             .orElseThrow(() -> new IllegalStateException("No IAsteroidSplitter implementation found!"));
+    // I findFirst because i only want 1 way to split asteroids (Maybe in future i can make more, where i make a a list
+    // instead and randomly pick a way to split the asteroid
 
     public CollisionDetector() {
     }

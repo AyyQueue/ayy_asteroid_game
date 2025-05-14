@@ -25,6 +25,9 @@
         <module>Player</module>
         <module>Enemy</module>
         <module>Collision</module>
+        <module>CommonWeapon</module>
+        <module>Multishot</module>
+        <module>Singleshot</module>
     </modules>
     <dependencyManagement>
         <dependencies>
