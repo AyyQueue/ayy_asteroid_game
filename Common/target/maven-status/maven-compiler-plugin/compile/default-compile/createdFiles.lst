@@ -8,3 +8,4 @@ dk\anfra22\cbse\common\services\IEntityProcessingService.class
 dk\anfra22\cbse\common\data\GameKeys.class
 dk\anfra22\cbse\common\services\IPostEntityProcessingService.class
 dk\anfra22\cbse\common\services\IGamePluginService.class
+dk\anfra22\cbse\common\util\SplitProviderLocator.class

@@ -1,4 +1,0 @@
---patch-module
-split.second.provider=_
---add-reads
-split.second.provider=ALL-UNNAMED

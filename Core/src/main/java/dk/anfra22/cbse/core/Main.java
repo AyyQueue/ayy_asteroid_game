@@ -1,15 +1,12 @@
 package dk.anfra22.cbse.core;
 
-import dk.anfra22.cbse.common.services.IGamePluginService;
 import dk.anfra22.cbse.common.services.SplitProvider;
+import dk.anfra22.cbse.common.util.SplitProviderLocator;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.lang.module.ModuleFinder;
-import java.nio.file.Paths;
-import java.util.ServiceLoader;
-import java.util.Set;
+import java.util.List;
 
 public class Main extends Application {
 
@@ -26,6 +23,12 @@ public class Main extends Application {
             System.out.println("Spring bean: " + beanName);
         }
 
+        // Load core/plugin services from unified SplitProviderLocator
+        List<SplitProvider> splitProviders = SplitProviderLocator.INSTANCE.locateAll(SplitProvider.class);
+        for (SplitProvider provider : splitProviders) {
+            System.out.println("Loaded provider says: " + provider.helloProvider());
+        }
+
         GameLogic gameLogic = context.getBean(GameLogic.class);
         gameLogic.start(stage);
         gameLogic.render();
@@ -38,19 +41,7 @@ public class Main extends Application {
         }
     }
 
-    private static ModuleLayer createLayer(String modsPath, String module) {
-        var appLayer = ModuleFinder.of(Paths.get(modsPath));
-        var parent = ModuleLayer.boot();
-        var cf = parent.configuration()
-                .resolve(appLayer, ModuleFinder.of(), Set.of(module));
-
-        return parent.defineModulesWithOneLoader(cf, ClassLoader.getSystemClassLoader());
-    }
-
     public static void main(String[] args) {
-        var layer = createLayer(args[0], "split.first.provider");
-        var services = ServiceLoader.load(layer, SplitProvider.class);
-        services.stream().map(ServiceLoader.Provider::get).forEach(service -> System.out.println(service.helloProvider()));
-        launch(args);
+        launch(args);  // JavaFX entry point
     }
 }
