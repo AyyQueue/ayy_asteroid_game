@@ -28,6 +28,9 @@
         <module>CommonWeapon</module>
         <module>Multishot</module>
         <module>Singleshot</module>
+        <module>Canon</module>
+        <module>split.first.provider</module>
+        <module>split.second.provider</module>
     </modules>
     <dependencyManagement>
         <dependencies>

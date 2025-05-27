@@ -2,6 +2,7 @@ dk\anfra22\cbse\common\data\Entity.class
 dk\anfra22\cbse\common\data\World.class
 dk\anfra22\cbse\common\services\IGameDataProcessingService.class
 dk\anfra22\cbse\common\data\GameData.class
+dk\anfra22\cbse\common\services\SplitProvider.class
 module-info.class
 dk\anfra22\cbse\common\services\IEntityProcessingService.class
 dk\anfra22\cbse\common\data\GameKeys.class

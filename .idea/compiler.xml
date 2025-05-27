@@ -9,11 +9,14 @@
         <module name="Bullet" />
         <module name="Player" />
         <module name="Background" />
+        <module name="split.first.provider" />
+        <module name="split.second.provider" />
         <module name="CommonBackground" />
         <module name="CommonAsteroids" />
         <module name="Collision" />
         <module name="CommonBullet" />
         <module name="Common" />
+        <module name="Canon" />
         <module name="CommonWeapon" />
         <module name="Asteroids" />
         <module name="Singleshot" />
@@ -25,6 +28,7 @@
     <bytecodeTargetLevel>
       <module name="Levels" target="9" />
       <module name="Main" target="9" />
+      <module name="SplitPackageProvider" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -21,6 +21,7 @@
       <set>
         <option value="$PROJECT_DIR$/Levels/pom.xml" />
         <option value="$PROJECT_DIR$/Main/pom.xml" />
+        <option value="$PROJECT_DIR$/SplitPackageProvider/pom.xml" />
       </set>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />

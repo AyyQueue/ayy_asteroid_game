@@ -1,4 +1,4 @@
-package dk.anfra22.cbse.collision;
+package dk.anfra22.cbse.split.provider;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
