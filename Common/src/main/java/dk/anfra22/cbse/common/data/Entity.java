@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @Component
-public class Entity implements Serializable {
+public class Entity {
 
     private final UUID ID = UUID.randomUUID();
 

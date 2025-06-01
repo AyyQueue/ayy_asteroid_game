@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Optional;
 import java.util.ServiceLoader;
 
@@ -40,7 +42,7 @@ class CollisionTest {
     }
 
     @Test
-    void testEntityCollision() {
+    void testEntityCollision() throws IOException, URISyntaxException, InterruptedException {
         Bullet bullet = new Bullet();
         bullet.setX(100);
         bullet.setY(100);

@@ -1,19 +1,11 @@
 package dk.anfra22.cbse.enemysystem;
 
-import dk.anfra22.cbse.common.bullet.BulletSPI;
 import dk.anfra22.cbse.common.data.Entity;
 import dk.anfra22.cbse.common.data.GameData;
 import dk.anfra22.cbse.common.data.World;
 import dk.anfra22.cbse.common.services.IEntityProcessingService;
 import dk.anfra22.cbse.playersystem.Player;
-import org.springframework.stereotype.Component;
 
-import java.util.Collection;
-import java.util.ServiceLoader;
-
-import static java.util.stream.Collectors.toList;
-
-@Component
 public class EnemyControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
@@ -26,7 +18,6 @@ public class EnemyControlSystem implements IEntityProcessingService {
                 double deltaY = player.getY() - enemy.getY();
 
                 double rotationAngle = Math.atan2(deltaY, deltaX);
-
                 enemy.setRotation(Math.toDegrees(rotationAngle));
 
                 // Sets the enemy to move
@@ -34,8 +25,6 @@ public class EnemyControlSystem implements IEntityProcessingService {
                 double changeY = Math.sin(Math.toRadians(enemy.getRotation())) * 0.7;
                 enemy.setX(enemy.getX() + changeX);
                 enemy.setY(enemy.getY() + changeY);
-
-
             }
 
             if (enemy.getX() < 0) {
@@ -58,9 +47,5 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
 
         }
-    }
-
-    private Collection<? extends BulletSPI> getBulletSPIs() {
-        return ServiceLoader.load(BulletSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
 }

@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="GB"/>
     <property name="sun.boot.library.path" value="C:\Users\ander\.jdks\openjdk-21.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\ander\AppData\Local\Temp\surefire18212548750006129550\surefirebooter-20250527124334653_33.jar C:\Users\ander\AppData\Local\Temp\surefire18212548750006129550 2025-05-27T12-43-07_741-jvmRun1 surefire-20250527124334653_31tmp surefire_10-20250527124334653_32tmp"/>
+    <property name="sun.java.command" value="C:\Users\ander\AppData\Local\Temp\surefire5148749168079473219\surefirebooter-20250601114259469_36.jar C:\Users\ander\AppData\Local\Temp\surefire5148749168079473219 2025-06-01T11-42-30_891-jvmRun1 surefire-20250601114259469_34tmp surefire_11-20250601114259469_35tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\ander\Documents\UNI\Software-Teknologi-4-Semester\CBSE\ayy_asteroid_game\Enemy\target\test-classes;C:\Users\ander\Documents\UNI\Software-Teknologi-4-Semester\CBSE\ayy_asteroid_game\Enemy\target\classes;C:\Users\ander\Documents\UNI\Software-Teknologi-4-Semester\CBSE\ayy_asteroid_game\Common\target\Common-1.0.1-SNAPSHOT.jar;C:\Users\ander\.m2\repository\org\openjfx\javafx-graphics\21.0.2\javafx-graphics-21.0.2.jar;C:\Users\ander\.m2\repository\org\openjfx\javafx-graphics\21.0.2\javafx-graphics-21.0.2-win.jar;C:\Users\ander\.m2\repository\org\openjfx\javafx-base\21.0.2\javafx-base-21.0.2.jar;C:\Users\ander\.m2\repository\org\openjfx\javafx-base\21.0.2\javafx-base-21.0.2-win.jar;C:\Users\ander\.m2\repository\org\springframework\spring-context\6.1.3\spring-context-6.1.3.jar;C:\Users\ander\.m2\repository\org\springframework\spring-aop\6.1.3\spring-aop-6.1.3.jar;C:\Users\ander\.m2\repository\org\springframework\spring-beans\6.1.3\spring-beans-6.1.3.jar;C:\Users\ander\.m2\repository\org\springframework\spring-core\6.1.3\spring-core-6.1.3.jar;C:\Users\ander\.m2\repository\org\springframework\spring-jcl\6.1.3\spring-jcl-6.1.3.jar;C:\Users\ander\.m2\repository\org\springframework\spring-expression\6.1.3\spring-expression-6.1.3.jar;C:\Users\ander\.m2\repository\io\micrometer\micrometer-observation\1.12.2\micrometer-observation-1.12.2.jar;C:\Users\ander\.m2\repository\io\micrometer\micrometer-commons\1.12.2\micrometer-commons-1.12.2.jar;C:\Users\ander\Documents\UNI\Software-Teknologi-4-Semester\CBSE\ayy_asteroid_game\CommonBullet\target\CommonBullet-1.0.1-SNAPSHOT.jar;C:\Users\ander\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\ander\Documents\UNI\Software-Teknologi-4-Semester\CBSE\ayy_asteroid_game\Player\target\Player-1.0.1-SNAPSHOT.jar;C:\Users\ander\Documents\UNI\Software-Teknologi-4-Semester\CBSE\ayy_asteroid_game\CommonWeapon\target\CommonWeapon-1.0.1-SNAPSHOT.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\ander\AppData\Local\Temp\surefire18212548750006129550\surefirebooter-20250527124334653_33.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ander\AppData\Local\Temp\surefire5148749168079473219\surefirebooter-20250601114259469_36.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.2+13-58"/>
@@ -61,5 +61,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testApp" classname="dk.anfra22.cbse.enemy.AppTest" time="0.002"/>
+  <testcase name="testApp" classname="dk.anfra22.cbse.enemy.AppTest" time="0.001"/>
 </testsuite>

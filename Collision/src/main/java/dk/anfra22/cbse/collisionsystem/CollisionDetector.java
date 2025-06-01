@@ -8,6 +8,8 @@ import dk.anfra22.cbse.common.data.World;
 import dk.anfra22.cbse.common.services.IPostEntityProcessingService;
 import dk.anfra22.cbse.common.bullet.Bullet;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ServiceLoader;
 
 public class CollisionDetector implements IPostEntityProcessingService {
@@ -22,7 +24,7 @@ public class CollisionDetector implements IPostEntityProcessingService {
     }
 
     @Override
-    public void process(GameData gameData, World world) {
+    public void process(GameData gameData, World world) throws IOException, URISyntaxException, InterruptedException {
         // two for loops for all entities in the world
         for (Entity entity1 : world.getEntities()) {
             for (Entity entity2 : world.getEntities()) {
@@ -42,10 +44,10 @@ public class CollisionDetector implements IPostEntityProcessingService {
                     System.out.println(entity2.getClass());
                     if (entity1.getClass().equals(Bullet.class) && entity2.getClass().equals(Asteroid.class)) {
                         world.removeEntity(entity1);
-                        asteroidSplitter.createSplitAsteroid(entity2, world);
+                        asteroidSplitter.createSplitAsteroid(entity2, world, gameData);
                     } else if (entity1.getClass().equals(Asteroid.class) && entity2.getClass().equals(Bullet.class)) {
                         world.removeEntity(entity2);
-                        asteroidSplitter.createSplitAsteroid(entity1, world);
+                        asteroidSplitter.createSplitAsteroid(entity1, world, gameData);
                     } else {
                         world.removeEntity(entity1);
                         world.removeEntity(entity2);

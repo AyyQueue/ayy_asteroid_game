@@ -23,6 +23,8 @@ import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -52,13 +54,8 @@ public class GameLogic extends Application {
 
     @Override
     public void start(Stage window) throws Exception {
-        Text text = new Text(10, 20, "Destroyed asteroids: 0");
-        text.setFill(Color.WHITE);
-        text.setId("asteroidText");
-        text.toFront();
 
         gameData.getGameWindow().setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
-        gameData.getGameWindow().getChildren().add(text);
 
         Scene scene = new Scene(gameData.getGameWindow());
         scene.setOnKeyPressed(event -> {
@@ -137,7 +134,13 @@ public class GameLogic extends Application {
         new AnimationTimer() {
             @Override
             public void handle(long now) {
-                update();
+                try {
+                    update();
+                } catch (IOException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                } catch (URISyntaxException e) {
+                    throw new RuntimeException(e);
+                }
                 draw();
                 gameData.getKeys().update();
             }
@@ -145,7 +148,7 @@ public class GameLogic extends Application {
         }.start();
     }
 
-    private void update() {
+    private void update() throws IOException, URISyntaxException, InterruptedException {
         for (IEntityProcessingService entityProcessorService : entityProcessingServices) {
             entityProcessorService.process(gameData, world);
         }

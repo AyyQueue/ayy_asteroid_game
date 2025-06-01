@@ -23,7 +23,6 @@ public class Main extends Application {
             System.out.println("Spring bean: " + beanName);
         }
 
-        // Load core/plugin services from unified SplitProviderLocator
         List<SplitProvider> splitProviders = SplitProviderLocator.INSTANCE.locateAll(SplitProvider.class);
         for (SplitProvider provider : splitProviders) {
             System.out.println("Loaded provider says: " + provider.helloProvider());

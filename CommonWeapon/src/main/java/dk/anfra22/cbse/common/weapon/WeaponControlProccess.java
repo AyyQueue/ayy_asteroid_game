@@ -51,7 +51,7 @@ public class WeaponControlProccess implements IGameDataProcessingService {
         for (Node node : gameData.getGameWindow().getChildren()) {
             String nodeId = node.getId();
             if ("currentWeaponText".equals(nodeId)) {
-                Text currentWeaponText = (Text) node;
+                    Text currentWeaponText = (Text) node;
                 currentWeaponText.setText("Current Weapon: " + weaponsPlugin.getCurrentWeapon().getClass().getSimpleName());
             }
         }

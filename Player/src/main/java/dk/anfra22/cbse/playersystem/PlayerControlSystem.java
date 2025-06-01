@@ -86,10 +86,4 @@ public class PlayerControlSystem implements IEntityProcessingService {
     private Collection<? extends WeaponSPI> getWeaponSPIs() {
         return ServiceLoader.load(WeaponSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
-
-    private WeaponsPlugin getWeaponsPlugin() {
-        return ServiceLoader.load(IGamePluginService.class).stream().map(ServiceLoader.Provider::get)
-                .filter(p -> p instanceof WeaponsPlugin).map(p -> (WeaponsPlugin) p).findFirst()
-                .orElse(null);
-    }
 }

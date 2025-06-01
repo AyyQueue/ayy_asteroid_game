@@ -19,8 +19,7 @@ public enum SplitProviderLocator {
 
     SplitProviderLocator() {
         try {
-            Path pluginsDir = Paths.get("plugins"); // Directory with plugins JARs
-            // Search for plugins in the plugins directory
+            Path pluginsDir = Paths.get("plugins");
             ModuleFinder pluginsFinder = ModuleFinder.of(pluginsDir);
 
             // Find all names of all found plugin modules
@@ -31,14 +30,13 @@ public enum SplitProviderLocator {
                     .map(ModuleDescriptor::name)
                     .collect(Collectors.toList());
 
-            // Create configuration that will resolve plugin modules
-            // (verify that the graph of modules is correct)
+            // Create the configuration
             Configuration pluginsConfiguration = ModuleLayer
                     .boot()
                     .configuration()
                     .resolve(pluginsFinder, ModuleFinder.of(), plugins);
 
-            // Create a module layer for plugins
+            // Create the layer with the plugins
             moduleLayer = ModuleLayer
                     .boot()
                     .defineModulesWithOneLoader(pluginsConfiguration, ClassLoader.getSystemClassLoader());

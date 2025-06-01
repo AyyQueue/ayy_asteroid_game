@@ -17,12 +17,14 @@
         <module name="CommonBullet" />
         <module name="Common" />
         <module name="Canon" />
+        <module name="ScoringSystemPlugin" />
         <module name="CommonWeapon" />
         <module name="Asteroids" />
         <module name="Singleshot" />
         <module name="Enemy" />
         <module name="Multishot" />
         <module name="Core" />
+        <module name="ScoringSystem" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
