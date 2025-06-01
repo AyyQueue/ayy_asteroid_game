@@ -34,5 +34,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
+        <dependency>
+            <groupId>dk.anfra22.cbse.scoringsystemplugin</groupId>
+            <artifactId>ScoringSystemPlugin</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>

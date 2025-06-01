@@ -8,15 +8,13 @@ import dk.anfra22.cbse.common.services.IGamePluginService;
 
 import java.util.Random;
 
-/**
- *
- * @author corfixen
- */
 public class AsteroidPlugin implements IGamePluginService {
 
     @Override
     public void start(GameData gameData, World world) {
         Entity asteroid = createAsteroid(gameData);
+        Random rnd = new Random();
+        asteroid.setHealthPoints(rnd.nextInt(2,4));
         world.addEntity(asteroid);
     }
 
@@ -38,7 +36,7 @@ public class AsteroidPlugin implements IGamePluginService {
         asteroid.setY(0);
         asteroid.setRadius(size);
         asteroid.setRotation(rnd.nextInt(90));
-        asteroid.setLifeAmount(rnd.nextInt(4));
+        asteroid.setHealthPoints(rnd.nextInt(1,4));
 
         return asteroid;
     }

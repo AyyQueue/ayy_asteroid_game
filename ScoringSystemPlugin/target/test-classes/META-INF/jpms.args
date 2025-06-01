@@ -1,0 +1,4 @@
+--patch-module
+ScoringSystemPlugin=_
+--add-reads
+ScoringSystemPlugin=ALL-UNNAMED

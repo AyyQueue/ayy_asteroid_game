@@ -6,7 +6,9 @@ import dk.anfra22.cbse.common.data.Entity;
 import dk.anfra22.cbse.common.data.GameData;
 import dk.anfra22.cbse.common.data.World;
 import dk.anfra22.cbse.common.services.IEntityProcessingService;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BulletControlSystem implements IEntityProcessingService, BulletSPI {
 
     @Override

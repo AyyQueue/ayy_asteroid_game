@@ -1,18 +1,24 @@
 package dk.anfra22.cbse.playersystem;
 
+import dk.anfra22.cbse.common.bullet.Bullet;
 import dk.anfra22.cbse.common.bullet.BulletSPI;
 import dk.anfra22.cbse.common.data.Entity;
 import dk.anfra22.cbse.common.data.GameData;
 import dk.anfra22.cbse.common.data.GameKeys;
 import dk.anfra22.cbse.common.data.World;
 import dk.anfra22.cbse.common.services.IEntityProcessingService;
+import dk.anfra22.cbse.common.services.IGamePluginService;
+import dk.anfra22.cbse.common.weapon.WeaponSPI;
+import dk.anfra22.cbse.common.weapon.WeaponsPlugin;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.ServiceLoader;
 
 import static java.util.stream.Collectors.toList;
 
-
+@Component
 public class PlayerControlSystem implements IEntityProcessingService {
 
     private int bulletCooldown = 0;
@@ -37,9 +43,17 @@ public class PlayerControlSystem implements IEntityProcessingService {
             }
             if(gameData.getKeys().isDown(GameKeys.SPACE)) {
                 if (bulletCooldown == 0) {
-                    getBulletSPIs().stream().findFirst().ifPresent(
-                            spi -> world.addEntity(spi.createBullet(player, gameData))
-                    );
+                    System.out.println(getWeaponSPIs());
+                    WeaponsPlugin weaponsPlugin = WeaponsPlugin.getInstance();
+                    if (weaponsPlugin != null && weaponsPlugin.getCurrentWeapon() != null) {
+                        for (Entity bullet : weaponsPlugin.getCurrentWeapon().createShot(player, world)) {
+                            world.addEntity(bullet);
+                        }
+                    } else {
+                        getBulletSPIs().stream().findFirst().ifPresent(
+                                spi -> world.addEntity(spi.createBullet(player, gameData))
+                        );
+                    }
                     bulletCooldown = 10;
                 }
                 bulletCooldown-=1;
@@ -67,5 +81,9 @@ public class PlayerControlSystem implements IEntityProcessingService {
 
     private Collection<? extends BulletSPI> getBulletSPIs() {
         return ServiceLoader.load(BulletSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
+    }
+
+    private Collection<? extends WeaponSPI> getWeaponSPIs() {
+        return ServiceLoader.load(WeaponSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
 }

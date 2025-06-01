@@ -8,4 +8,5 @@ module Background {
     requires javafx.graphics;
     requires spring.context;
     provides BackgroundSPI with BackgroundPlugin;
+    exports dk.anfra22.cbse.background;
 }

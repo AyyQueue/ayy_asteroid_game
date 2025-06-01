@@ -25,6 +25,14 @@
         <module>Player</module>
         <module>Enemy</module>
         <module>Collision</module>
+        <module>CommonWeapon</module>
+        <module>Multishot</module>
+        <module>Singleshot</module>
+        <module>Canon</module>
+        <module>split.first.provider</module>
+        <module>ScoringSystem</module>
+        <module>ScoringSystemPlugin</module>
+<!--        <module>split.second.provider</module>-->
     </modules>
     <dependencyManagement>
         <dependencies>

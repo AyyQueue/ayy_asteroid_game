@@ -9,19 +9,28 @@
         <module name="Bullet" />
         <module name="Player" />
         <module name="Background" />
-        <module name="Asteroids" />
+        <module name="split.first.provider" />
+        <module name="split.second.provider" />
         <module name="CommonBackground" />
         <module name="CommonAsteroids" />
-        <module name="Enemy" />
         <module name="Collision" />
         <module name="CommonBullet" />
         <module name="Common" />
+        <module name="Canon" />
+        <module name="ScoringSystemPlugin" />
+        <module name="CommonWeapon" />
+        <module name="Asteroids" />
+        <module name="Singleshot" />
+        <module name="Enemy" />
+        <module name="Multishot" />
         <module name="Core" />
+        <module name="ScoringSystem" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Levels" target="9" />
       <module name="Main" target="9" />
+      <module name="SplitPackageProvider" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -14,12 +14,15 @@
         <option value="$PROJECT_DIR$/Background/pom.xml" />
         <option value="$PROJECT_DIR$/CommonAsteroids/pom.xml" />
         <option value="$PROJECT_DIR$/Core/pom.xml" />
+        <option value="$PROJECT_DIR$/CommonWeapon/pom.xml" />
+        <option value="$PROJECT_DIR$/split.second.provider/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/Levels/pom.xml" />
         <option value="$PROJECT_DIR$/Main/pom.xml" />
+        <option value="$PROJECT_DIR$/SplitPackageProvider/pom.xml" />
       </set>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />

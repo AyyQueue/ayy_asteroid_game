@@ -7,6 +7,8 @@
     <file url="file://$PROJECT_DIR$/Background/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Bullet/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Bullet/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Canon/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Canon/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Collision/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Collision/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Common/src/main/java" charset="UTF-8" />
@@ -17,6 +19,8 @@
     <file url="file://$PROJECT_DIR$/CommonBackground/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonBullet/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonBullet/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonWeapon/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonWeapon/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Enemy/src/main/java" charset="UTF-8" />
@@ -25,8 +29,22 @@
     <file url="file://$PROJECT_DIR$/Levels/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Main/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Main/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Multishot/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Multishot/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Player/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Player/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ScoringSystem/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ScoringSystem/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ScoringSystemPlugin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ScoringSystemPlugin/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Singleshot/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Singleshot/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SplitPackageProvider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SplitPackageProvider/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/split.first.provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/split.first.provider/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/split.second.provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/split.second.provider/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

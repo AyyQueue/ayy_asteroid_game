@@ -1,0 +1,4 @@
+--patch-module
+split.first.provider=_
+--add-reads
+split.first.provider=ALL-UNNAMED

@@ -13,6 +13,8 @@ module Core {
     uses dk.anfra22.cbse.common.services.IPostEntityProcessingService;
     uses dk.anfra22.cbse.common.background.BackgroundSPI;
     uses dk.anfra22.cbse.common.bullet.BulletSPI;
+    uses dk.anfra22.cbse.common.services.IGameDataProcessingService;
+    uses dk.anfra22.cbse.common.services.SplitProvider;
 }
 
 
